@@ -1,0 +1,54 @@
+﻿@model Product
+@{
+    string title = ViewBag.Action + " Product";
+    ViewBag.Title = title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Description">First Name</label>
+        <input asp-for="Description" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ProductName">Last Name</label>
+        <input asp-for="ProductName" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Code">Code</label>
+        <input asp-for="Code" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Vendor">Vendor</label>
+        <input asp-for="Vendor" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CategoryId">Category</label>
+        <select asp-for="CategoryId" class="form-control">
+            <option value="0">select a Category</option>
+            @foreach (Category g in ViewBag.Categories)
+            {
+                <option value=@g.CategoryId>@g.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control">
+    </div>
+    
+    <div class="mb-4">
+        <input type="hidden" asp-for="ProductId" />
+        <button type="submit" class="btn btn-dark">@ViewBag.Action</button>
+        <a asp-controller="Home" asp-action="Index"
+        class="btn btn-dark">Cancel</a>
+    </div>
+</form>

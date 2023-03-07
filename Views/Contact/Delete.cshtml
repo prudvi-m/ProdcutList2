@@ -1,0 +1,15 @@
+﻿@model Product
+@{
+    ViewBag.Title = "Delete Product";
+}
+
+<span>Do you really want to delete <b>@Model.Description @Model.ProductName</b>? </span>
+
+<form asp-action="Delete" method="post">
+    <div class="m-4">
+        <input type="hidden" asp-for="ProductId" />
+        <button type="submit" class="btn btn-dark">Yes</button>
+        <a asp-controller="Home" asp-action="Index"
+        class="btn btn-dark">No</a>
+    </div>
+</form>

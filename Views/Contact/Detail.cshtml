@@ -1,0 +1,80 @@
+@model Product
+@{
+    string title = "Product " + ViewBag.Action;
+    ViewBag.Title = title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="DetailEdit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="container ">
+        <div class="row form-group border p-2 pt-3 mb-2  ">
+            <div class="col-sm">
+                <b asp-for="Description">First Name</b>
+            </div>
+            <div class="col-sm">
+                <label asp-for="ProductName">@Model.Description</label>
+            </div>
+        </div>
+
+        <div class="row form-group border p-2 pt-3 mb-2  ">
+            <div class="col-sm">
+                <b asp-for="ProductName">Last Name</b>
+            </div>
+            <div class="col-sm">
+                <label asp-for="ProductName">@Model.ProductName</label>
+            </div>
+        </div>
+
+        <div class="row border p-2 pt-3 mb-2 ">
+            <div class="col-sm">
+                <b>Code</b>
+            </div>
+            <div class="col-sm">
+                <label>@ViewBag.Code</label>
+            </div>
+        </div>
+
+        <div class="row border p-2 pt-3 mb-2 ">
+            <div class="col-sm">
+                <b>Vendor</b>
+            </div>
+            <div class="col-sm">
+                <label>@ViewBag.Vendor</label>
+            </div>
+        </div>
+
+
+        <div class="row form-group border p-2 pt-3 mb-2 ">
+            <div class="col-sm">
+                <b>Category</b>
+            </div>
+            <div class="col-sm">
+                <label>@ViewBag.Category</label>
+            </div>
+        </div>
+        
+        <div class="row border p-2 pt-3 mb-2 ">
+            <div class="col-sm">
+                <b>Organisation</b>
+            </div>
+            <div class="col-sm">
+                <label>@ViewBag.Organisation</label>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+    <div class="m-4">
+        <input type="hidden" asp-for="ProductId" />
+        <button type="submit" class="btn btn-dark">Edit</button>
+        <a asp-controller="Product" asp-action="Delete" asp-route-id="@Model.ProductId" asp-route-slug="@Model.Slug" 
+            class="btn btn-dark">Delete</a>
+        <a asp-controller="Home" asp-action="Index" 
+            class="btn btn-dark">Cancel</a>
+    </div>
+</form>
